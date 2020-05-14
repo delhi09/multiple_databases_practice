@@ -1,0 +1,2 @@
+# multiple_databases_practice
+Djangoで複数台構成のDBを扱う練習用のリポジトリです。
