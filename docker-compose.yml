@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    db_server1:
+        image: kamatimaru/mysql57-ja:latest
+        ports: 
+            - "3306:3306"
+        networks:
+            app_net:
+                ipv4_address: 172.32.0.10
+        environment: 
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: sample
+    
+    db_server2:
+        image: kamatimaru/mysql57-ja:latest
+        ports: 
+            - "3307:3306"
+        networks:
+            app_net:
+                ipv4_address: 172.32.0.11
+        environment: 
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: sample
+
+networks:
+    app_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.32.0.0/20
